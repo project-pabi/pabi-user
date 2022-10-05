@@ -1,0 +1,1 @@
+docker build --tag pabi-user --build-arg JAR_PATH=./build/libs/ .
