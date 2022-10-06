@@ -11,5 +11,5 @@ import org.mapstruct.ReportingPolicy;
 )
 public interface UserMapper {
 
-  UserInfo.getUserOneInfo of(PabiUser pabiUser);
+  UserInfo.getUserOneInfo of(User user);
 }
