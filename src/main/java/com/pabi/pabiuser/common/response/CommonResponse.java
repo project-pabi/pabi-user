@@ -1,5 +1,6 @@
 package com.pabi.pabiuser.common.response;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,9 +12,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CommonResponse<T> {
 
+  @ApiModelProperty(example = "성공여부")
   private Result result;
+  @ApiModelProperty(example = "응답데이터")
   private T data;
+  @ApiModelProperty(example = "메세지")
   private String message;
+  @ApiModelProperty(example = "오류 코드")
   private String errorCode;
 
   public static <T> CommonResponse<T> success(T data, String message) {

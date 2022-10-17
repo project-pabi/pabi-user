@@ -19,6 +19,7 @@ public enum ErrorCode {
   DUPLICATE_USER("이미 가입 되어 있는 유저 입니다."),
   FORBIDDEN_ERROR("접근할 수 없습니다."),
   LOGIN_ID_ERROR("존재하지 않는 아이디입니다."),
+  USER_NOT_FOUND("존재하지 않는 유저입니다."),
   LOGIN_PASSWORD_ERROR("비밀번호가 틀렸습니다."),
 
   // Category

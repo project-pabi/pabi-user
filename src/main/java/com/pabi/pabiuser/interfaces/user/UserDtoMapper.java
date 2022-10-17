@@ -2,10 +2,9 @@ package com.pabi.pabiuser.interfaces.user;
 
 import com.pabi.pabiuser.domain.user.UserCommand;
 import com.pabi.pabiuser.domain.user.UserInfo;
+import com.pabi.pabiuser.interfaces.user.UserDto.UserModifyRequest;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
 import org.mapstruct.ReportingPolicy;
 
 @Mapper(
@@ -15,12 +14,8 @@ import org.mapstruct.ReportingPolicy;
 )
 public interface UserDtoMapper {
 
-  @Mappings({
-      @Mapping(source = "request.userId", target = "userIdCommand")})
-   UserCommand.UserRequest of (UserDto.UserRequest request);
+  UserDto.UserResponse of(UserInfo.Main info);
 
-
-  @Mappings({
-      @Mapping(source = "info.email", target = "userId")})
-  UserDto.UserResponse of(UserInfo.getUserOneInfo info);
+  UserCommand.Request of(UserDto.UserRequest request);
+  UserCommand.ModifyRequest of(UserDto.UserModifyRequest request);
 }

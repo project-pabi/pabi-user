@@ -1,19 +1,18 @@
 package com.pabi.pabiuser.infrastructure.user;
 
+import com.pabi.pabiuser.common.exception.user.NotfoundUserException;
 import com.pabi.pabiuser.domain.user.User;
-import com.pabi.pabiuser.domain.user.UserCommand;
 import com.pabi.pabiuser.domain.user.UserReader;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class userReaderImpl implements UserReader {
+public class UserReaderImpl implements UserReader {
 
   private final UserRepository userRepository;
 
-  @Override
-  public User getUserOne(UserCommand.UserRequest command) {
-    return userRepository.findByEmail(command.getUserIdCommand());
+  public User findUserInfo(Long userId) {
+    return userRepository.findByIdAndWithdrawalFalse(userId).orElseThrow(NotfoundUserException::new);
   }
 }
