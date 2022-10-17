@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class UserFactoryImpl implements UserFactory {
+class UserFactoryImpl implements UserFactory {
 
   @Override
   public void softDeleteUser(User user) {

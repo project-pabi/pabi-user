@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class UserStoreImpl implements UserStore {
+class UserStoreImpl implements UserStore {
 
   private final UserRepository userRepository;
 

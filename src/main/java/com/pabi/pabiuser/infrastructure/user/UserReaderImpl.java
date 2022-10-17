@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class UserReaderImpl implements UserReader {
+class UserReaderImpl implements UserReader {
 
   private final UserRepository userRepository;
 

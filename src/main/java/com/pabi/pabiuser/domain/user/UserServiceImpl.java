@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class UserServiceImpl implements UserService {
+class UserServiceImpl implements UserService {
 
   private final UserReader userReader;
   private final UserStore userStore;
