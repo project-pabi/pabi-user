@@ -43,10 +43,14 @@ public class UserController {
     return CommonResponse.success(response, "생성 되었습니다.");
   }
 
-  @PatchMapping("/")
+  @PatchMapping("/{userId}")
   @ApiOperation(value = "유저 수정")
-  public CommonResponse modifyUser(@RequestBody UserDto.UserModifyRequest request) {
-    var command = userDtoMapper.of(request);
+  @ApiImplicitParam(
+      name = "userId"
+      , value = "유저 PK"
+      , required = true)
+  public CommonResponse modifyUser(@PathVariable("userId") Long userId, @RequestBody UserDto.UserModifyRequest request) {
+    var command = userDtoMapper.of(userId, request);
     userFacade.modifyUser(command);
     return CommonResponse.success(null, "수정 되었습니다.");
   }

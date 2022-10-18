@@ -31,8 +31,6 @@ public class UserDto {
   @NoArgsConstructor
   @ApiModel(value = "User 수정 Request")
   public static class UserModifyRequest {
-    @ApiModelProperty(value = "Pk ID", required = true)
-    private String id;
     @ApiModelProperty(value = "이메일 아이디", required = true, example = "test@gmail.com")
     private String email;
     @ApiModelProperty(value = "닉네임", required = true, example = "닉네임수정")

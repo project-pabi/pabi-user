@@ -17,5 +17,5 @@ public interface UserDtoMapper {
   UserDto.UserResponse of(UserInfo.Main info);
 
   UserCommand.Request of(UserDto.UserRequest request);
-  UserCommand.ModifyRequest of(UserDto.UserModifyRequest request);
+  UserCommand.ModifyRequest of(Long id, UserDto.UserModifyRequest request);
 }
