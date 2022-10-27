@@ -15,4 +15,14 @@ class UserReaderImpl implements UserReader {
   public User findUserInfo(Long userId) {
     return userRepository.findByIdAndWithdrawalFalse(userId).orElseThrow(NotfoundUserException::new);
   }
+
+  @Override
+  public boolean nickNameDuplicateCheck(String nickName) {
+    return userRepository.findByNickName(nickName).isPresent();
+  }
+
+  @Override
+  public boolean emailDuplicateCheck(String email) {
+    return userRepository.findByEmail(email).isPresent();
+  }
 }
