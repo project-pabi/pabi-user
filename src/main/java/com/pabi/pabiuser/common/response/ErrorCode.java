@@ -16,7 +16,8 @@ public enum ErrorCode {
   GIFT_NOT_MODIFY_DELIVERY_CONDITION("배송지 변경이 가능한 상태가 아닙니다."),
 
   // User
-  DUPLICATE_USER("이미 가입 되어 있는 유저 입니다."),
+  DUPLICATE_USER_EMAIL("이미 가입 되어 있는 유저 이메일 입니다."),
+  DUPLICATE_USER_NICKNAME("이미 가입 되어 있는 유저 닉네임 입니다."),
   FORBIDDEN_ERROR("접근할 수 없습니다."),
   LOGIN_ID_ERROR("존재하지 않는 아이디입니다."),
   USER_NOT_FOUND("존재하지 않는 유저입니다."),
