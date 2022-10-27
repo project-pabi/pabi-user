@@ -20,15 +20,15 @@ import lombok.Setter;
 @NotNullAddress
 public class Address {
 
-  @NotBlank(groups = AddressGroup.class)
+  @NotBlank(groups = AddressGroup.class, message = "주소를 입력해 주세요.")
   @ApiModelProperty(value = "주소", example = "경기 성남시 중원구 은이로43번길 20-1")
   private String address;
 
-  @NotBlank(groups = AddressGroup.class)
+  @NotBlank(groups = AddressGroup.class, message = "상세주소를 입력해 주세요.")
   @ApiModelProperty(value = "상세주소", example = "201호")
   private String addressEtc;
 
-  @NotBlank(groups = AddressGroup.class)
+  @NotBlank(groups = AddressGroup.class, message = "우편번호를 입력해 주세요.")
   @ApiModelProperty(value = "우편번호", example = "13154")
   private String zipcode;
 
