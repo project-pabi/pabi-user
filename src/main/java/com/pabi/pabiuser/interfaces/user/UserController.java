@@ -6,6 +6,8 @@ import com.pabi.pabiuser.interfaces.user.UserDto.UserModifyRequest;
 import com.pabi.pabiuser.interfaces.user.UserDto.UserRequest;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,9 +37,32 @@ public class UserController {
     return CommonResponse.success(response, "조회 되었습니다.");
   }
 
+  @GetMapping("/{nickName}/exist")
+  @ApiOperation(value = "닉네임 중복체크")
+  @ApiImplicitParam(
+      name = "nickName"
+      , value = "유저 닉네임"
+      , required = true)
+  public CommonResponse<Boolean> nickNameDuplicateCheck(@PathVariable("nickName") String nickName) {
+    var response = userFacade.nickNameDuplicateCheck(nickName);
+    return CommonResponse.success(response);
+  }
+
+  @GetMapping("/{email}/exist")
+  @ApiOperation(value = "닉네임 중복체크")
+  @ApiImplicitParam(
+      name = "email"
+      , value = "유저 이메일"
+      , required = true)
+  public CommonResponse<Boolean> emailDuplicateCheck(@PathVariable("email") String email) {
+    var response = userFacade.emailDuplicateCheck(email);
+    return CommonResponse.success(response);
+  }
+
   @PostMapping("/")
   @ApiOperation(value = "유저 생성")
-  public CommonResponse<Long> inputUser(@RequestBody UserDto.UserRequest request) {
+  @ApiResponse()
+  public CommonResponse<Long> inputUser(@RequestBody @Valid UserDto.UserRequest request) {
     var command = userDtoMapper.of(request);
     var response = userFacade.inputUser(command);
     return CommonResponse.success(response, "생성 되었습니다.");
