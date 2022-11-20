@@ -3,6 +3,7 @@ package com.pabi.pabiuser.domain.user;
 import com.pabi.pabiuser.domain.Address.Address;
 import com.pabi.pabiuser.domain.user.UserCommand.Request;
 import com.sun.istack.NotNull;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -25,6 +26,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Setter(AccessLevel.PROTECTED)
 @Table(name = "pabi_user")
 public class User {
+
+  @Column(unique = true)
+  private String uuid = UUID.randomUUID().toString();
 
   @Id
   @Column(name = "user_id")
