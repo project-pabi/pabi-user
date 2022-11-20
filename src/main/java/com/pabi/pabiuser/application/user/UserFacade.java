@@ -30,4 +30,12 @@ public class UserFacade {
   public void deleteUser(Long userId) {
     userService.deleteUser(userId);
   }
+
+  public boolean nickNameDuplicateCheck(String nickName) {
+    return userService.nickNameDuplicateCheck(nickName);
+  }
+
+  public boolean emailDuplicateCheck(String email) {
+    return userService.emailDuplicateCheck(email);
+  }
 }
