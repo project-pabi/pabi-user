@@ -1,15 +1,22 @@
 package com.pabi.pabiuser.domain.user;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pabi.pabiuser.common.exception.user.DuplicateUserEmailException;
 import com.pabi.pabiuser.common.exception.user.DuplicateUserNickNameException;
 import com.pabi.pabiuser.domain.user.UserInfo.Main;
+import java.util.HashMap;
+import java.util.Map;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
+@Slf4j
 class UserServiceImpl implements UserService {
 
   private final UserReader userReader;
@@ -25,10 +32,10 @@ class UserServiceImpl implements UserService {
   @Override
   @Transactional
   public Long inputUser(UserCommand.Request commend) {
-    if(userReader.emailDuplicateCheck(commend.getEmail())) {
+    if (userReader.emailDuplicateCheck(commend.getEmail())) {
       throw new DuplicateUserEmailException();
     }
-    if(userReader.nickNameDuplicateCheck(commend.getNickName())) {
+    if (userReader.nickNameDuplicateCheck(commend.getNickName())) {
       throw new DuplicateUserNickNameException();
     }
     return userStore.inputUser(User.createUser(commend)).getId();
@@ -57,4 +64,5 @@ class UserServiceImpl implements UserService {
   public boolean emailDuplicateCheck(String email) {
     return userReader.emailDuplicateCheck(email);
   }
+
 }
