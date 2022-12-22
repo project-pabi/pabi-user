@@ -1,10 +1,9 @@
 package com.pabi.pabiuser.application.user;
 
 import com.pabi.pabiuser.domain.user.UserCommand;
-import com.pabi.pabiuser.domain.user.UserCommand.Request;
 import com.pabi.pabiuser.domain.user.UserInfo;
 import com.pabi.pabiuser.domain.user.UserService;
-import com.pabi.pabiuser.interfaces.user.UserDto;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -13,17 +12,18 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class UserFacade {
-  private final UserService userService;
 
+  private final UserService userService;
+ 
   public UserInfo.Main findUserInfo(Long userId) {
     return userService.findUserInfo(userId);
   }
 
-  public Long inputUser(UserCommand.Request commend) {
+  public Long inputUser(@Valid UserCommand.Request commend) {
     return userService.inputUser(commend);
   }
 
-  public void modifyUser(UserCommand.ModifyRequest command) {
+  public void modifyUser(@Valid UserCommand.ModifyRequest command) {
     userService.modifyUser(command);
   }
 

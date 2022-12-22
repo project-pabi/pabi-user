@@ -1,4 +1,4 @@
-package com.pabi.pabiuser.domain.Address;
+package com.pabi.pabiuser.domain.user.address;
 
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;

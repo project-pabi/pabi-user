@@ -1,6 +1,6 @@
 package com.pabi.pabiuser.interfaces.user;
 
-import com.pabi.pabiuser.domain.Address.Address;
+import com.pabi.pabiuser.domain.user.address.Address;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import javax.validation.Valid;
@@ -13,13 +13,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 public class UserDto {
-
+ 
   @Getter
   @Builder
   @AllArgsConstructor
   @NoArgsConstructor
   @ApiModel(value = "User 기본 Request")
-  public static class UserRequest{
+  public static class UserRequest {
+
     @Email(message = "이메일 형식이 아닙니다.")
     @NotBlank(message = "아이디를 입력해 주세요.")
     @ApiModelProperty(value = "이메일 아이디", example = "test@gmail.com", required = true)
@@ -44,11 +45,13 @@ public class UserDto {
   @NoArgsConstructor
   @ApiModel(value = "User 수정 Request")
   public static class UserModifyRequest {
+
     @Email(message = "이메일 형식이 아닙니다.")
     @ApiModelProperty(value = "이메일 아이디", required = true, example = "test@gmail.com")
     private String email;
     @ApiModelProperty(value = "닉네임", required = true, example = "닉네임수정")
     private String nickName;
+    @Valid
     @ApiModelProperty(value = "주소")
     private Address address;
   }
@@ -57,7 +60,7 @@ public class UserDto {
   @Builder
   @AllArgsConstructor
   @ApiModel(value = "User 기본 Response")
-  public static class UserResponse{
+  public static class UserResponse {
 
     @ApiModelProperty(value = "PK ID", required = true)
     private Long id;

@@ -2,8 +2,6 @@ package com.pabi.pabiuser.interfaces.user;
 
 import com.pabi.pabiuser.application.user.UserFacade;
 import com.pabi.pabiuser.common.response.CommonResponse;
-import com.pabi.pabiuser.interfaces.user.UserDto.UserModifyRequest;
-import com.pabi.pabiuser.interfaces.user.UserDto.UserRequest;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -36,7 +34,7 @@ public class UserController {
     var response = userDtoMapper.of(info);
     return CommonResponse.success(response, "조회 되었습니다.");
   }
-
+ 
   @GetMapping("/{nickName}/exist")
   @ApiOperation(value = "닉네임 중복체크")
   @ApiImplicitParam(
@@ -74,7 +72,7 @@ public class UserController {
       name = "userId"
       , value = "유저 PK"
       , required = true)
-  public CommonResponse modifyUser(@PathVariable("userId") Long userId, @RequestBody UserDto.UserModifyRequest request) {
+  public CommonResponse modifyUser(@PathVariable("userId") Long userId, @RequestBody @Valid UserDto.UserModifyRequest request) {
     var command = userDtoMapper.of(userId, request);
     userFacade.modifyUser(command);
     return CommonResponse.success(null, "수정 되었습니다.");
